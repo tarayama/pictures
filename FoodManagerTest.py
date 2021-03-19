@@ -133,7 +133,6 @@ def get_food(API_KEY):
 
 
 #近隣5件のフードバンク取得
-#これに関してな
 def get_near_foodbank(postal_code):
     url = "http://127.0.0.1:8000/postal_code/{}".format(postal_code) #174-0053 is Toyo University Sports center's postal code.
     headers={"Content-Type": "application/json"}
