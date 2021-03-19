@@ -143,7 +143,7 @@ def get_near_foodbank(postal_code):
     print(values)
     return values
 
-#画像からの賞味期限取得
+
 from pyzbar.pyzbar import decode
 from PIL import Image
 
@@ -163,5 +163,19 @@ def get_Foodname_by_jancode(jancode):
     values = json.loads(response.text)
     print(values)
     return values
-    
 
+#画像からの賞味期限取得
+def Image_to_limit(YourPictureFileName):
+    fileDataBinary = open(YourPictureFileName, 'rb').read()
+    files = {'uploadFile': (YourPictureFileName, fileDataBinary, 'image/jpeg')}
+    url = 'http://127.0.0.1/GetLimit'
+    response = requests.post(url, files=files)
+    print(response)
+    try:
+        values = json.loads(response.text)
+        print(values)
+        print(values['result'][0])
+        return values['result'][0]
+    except:
+        print(response.text)
+        return responnse.text
